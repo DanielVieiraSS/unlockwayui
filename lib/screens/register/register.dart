@@ -30,6 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var lastNameController = TextEditingController();
   var weightController = TextEditingController();
   var heightController = TextEditingController();
+  bool isFetching = false;
 
   String biotype = "ECTOMORPH";
   String sex = "MALE";
@@ -84,6 +85,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       currentStep = 1;
     });
+  }
+
+  fetching() async {
+    setState(() => isFetching = true);
+    registerAPI(
+      context,
+      firstNameController.text,
+      lastNameController.text,
+      emailController.text,
+      passwordController.text,
+      double.parse(heightController.text),
+      double.parse(weightController.text),
+      goals,
+      biotype,
+      sex,
+    );
+    setState(() => isFetching = true);
   }
 
   @override
@@ -179,39 +197,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: () => {
-                                if (currentStep == 3)
-                                  {
-                                    registerAPI(
-                                      context,
-                                      firstNameController.text,
-                                      lastNameController.text,
-                                      emailController.text,
-                                      passwordController.text,
-                                      double.parse(heightController.text),
-                                      double.parse(weightController.text),
-                                      goals,
-                                      biotype,
-                                      sex,
-                                    )
-                                  }
-                                else
-                                  {
-                                    if (currentStep == 1)
-                                      {goToNextStep()}
-                                    else
-                                      {
-                                        if (passwordController.text !=
-                                            confirmPasswordController.text)
-                                          {
-                                            modalBuilderBottomAnimation(
-                                              context,
-                                              const SimplePopup(
-                                                message: "Senhas não coincidêm",
-                                              ),
-                                            )
-                                          }
-                                        else
+                              onTap: !isFetching
+                                  ? () => {
+                                        if (currentStep == 3)
                                           {
                                             registerAPI(
                                               context,
@@ -228,36 +216,69 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                               sex,
                                             )
                                           }
+                                        else
+                                          {
+                                            if (currentStep == 1)
+                                              {goToNextStep()}
+                                            else
+                                              {
+                                                if (passwordController.text !=
+                                                    confirmPasswordController
+                                                        .text)
+                                                  {
+                                                    modalBuilderBottomAnimation(
+                                                      context,
+                                                      const SimplePopup(
+                                                        message:
+                                                            "Senhas não coincidêm",
+                                                      ),
+                                                    )
+                                                  }
+                                                else
+                                                  {
+                                                    fetching(),
+                                                  }
+                                              }
+                                          }
                                       }
-                                  }
-                              },
+                                  : () {},
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    currentStep == 3
-                                        ? "Confirmar"
-                                        : currentStep == 1
-                                            ? "Seguir"
-                                            : "Confirmar",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500,
-                                      fontFamily: "Poppins",
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_outlined,
-                                    color:
-                                        Theme.of(context).colorScheme.onPrimary,
-                                  ),
-                                ],
+                                children: isFetching
+                                    ? [
+                                        const SizedBox(
+                                          width: 18,
+                                          height: 18,
+                                          child: CircularProgressIndicator(
+                                              color: Colors.white),
+                                        )
+                                      ]
+                                    : [
+                                        Text(
+                                          currentStep == 3
+                                              ? "Confirmar"
+                                              : currentStep == 1
+                                                  ? "Seguir"
+                                                  : "Confirmar",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: "Poppins",
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_outlined,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimary,
+                                        ),
+                                      ],
                               ),
                             ),
                           ),

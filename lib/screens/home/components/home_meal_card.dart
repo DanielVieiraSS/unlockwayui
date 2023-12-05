@@ -59,7 +59,7 @@ class HomeMealCard extends StatelessWidget {
         height: 219,
         padding: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
-          color: Color(darkBglight),
+          color: Theme.of(context).colorScheme.onBackground,
           borderRadius: const BorderRadius.all(
             Radius.circular(6),
           ),
@@ -83,10 +83,10 @@ class HomeMealCard extends StatelessWidget {
                 children: [
                   Text(
                     actualHour[0],
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: "Signika",
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.outline,
                       fontSize: 19.02,
                     ),
                   ),
@@ -97,8 +97,8 @@ class HomeMealCard extends StatelessWidget {
                     flex: 2,
                     child: Text(
                       actualCategory,
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.outline,
                         fontFamily: "Inter",
                         fontSize: 16.0,
                         overflow: TextOverflow.ellipsis,
@@ -118,9 +118,9 @@ class HomeMealCard extends StatelessWidget {
                 width: double.infinity,
                 child: Text(
                   description,
-                  style: const TextStyle(
+                  style: TextStyle(
                     overflow: TextOverflow.ellipsis,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.background,
                     fontSize: 12,
                     fontFamily: "Inter",
                   ),

@@ -4,9 +4,11 @@ import 'package:unlockway/constants.dart';
 
 ThemeData lightMode = ThemeData(
   useMaterial3: true,
-  appBarTheme: const AppBarTheme(
-    systemOverlayStyle:
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+  appBarTheme: AppBarTheme(
+    systemOverlayStyle: SystemUiOverlayStyle(
+      statusBarColor: Color(darkBgdark),
+      systemNavigationBarColor: Color(darkBgdark),
+    ),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: Color(primary),

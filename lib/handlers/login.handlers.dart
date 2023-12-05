@@ -17,67 +17,76 @@ Future<void> loginAPI(
   String email,
   String password,
 ) async {
-  const String apiUrl =
-      'https://unlockway.azurewebsites.net/api/v1/auth/authenticate';
-
-  Map payload = {
-    "email": email,
-    "password": password,
-  };
-
-  // Encoding Map to JSON
-  var body = json.encode(payload);
-
-  try {
-    final response = await http.post(Uri.parse(apiUrl),
-        headers: {"Content-type": "application/json"}, body: body);
-
-    Map<Object?, Object?> user = json.decode(response.body);
-
-    userData = UserModel.fromMap(user);
-
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('Email', userData.email!);
-    await prefs.setString('Password', password);
-
-    navigatePage(
-      context,
-      const Home(),
-    );
-
-    if (userData.id != null) {
-      String? mMass;
-      String? mHealth;
-      String? lWeight;
-
-      if (userData.goals?.gainMuscularMass == true) mMass = 'Ganhar músculo';
-      if (userData.goals?.maintainHealth == true) mHealth = "Manter saúde";
-      if (userData.goals?.loseWeight == true) lWeight = 'Perder peso';
-
-      updateUserDataHandler(
-        null,
-        userData.id!,
-        userData.token!,
-        userData.firstName!,
-        userData.lastName!,
-        userData.email!,
-        '',
-        userData.height!,
-        userData.weight!,
-        [mMass, mHealth, lWeight]
-            .where((e) => e != null)
-            .map((e) => e!)
-            .toList(),
-        userData.biotype!,
-        userData.sex!,
-      );
-    }
-  } catch (e) {
+  if (email == "" || password == "") {
     modalBuilderBottomAnimation(
       context,
-      SimplePopup(
-        message: e.toString(),
+      const SimplePopup(
+        message: "Preencha seu login e senha",
       ),
     );
+  } else {
+    const String apiUrl =
+        'https://unlockway.azurewebsites.net/api/v1/auth/authenticate';
+
+    Map payload = {
+      "email": email,
+      "password": password,
+    };
+
+    // Encoding Map to JSON
+    var body = json.encode(payload);
+
+    try {
+      final response = await http.post(Uri.parse(apiUrl),
+          headers: {"Content-type": "application/json"}, body: body);
+
+      Map<Object?, Object?> user = json.decode(response.body);
+
+      userData = UserModel.fromMap(user);
+
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('Email', userData.email!);
+      await prefs.setString('Password', password);
+
+      navigatePage(
+        context,
+        const Home(),
+      );
+
+      if (userData.id != null) {
+        String? mMass;
+        String? mHealth;
+        String? lWeight;
+
+        if (userData.goals?.gainMuscularMass == true) mMass = 'Ganhar músculo';
+        if (userData.goals?.maintainHealth == true) mHealth = "Manter saúde";
+        if (userData.goals?.loseWeight == true) lWeight = 'Perder peso';
+
+        updateUserDataHandler(
+          null,
+          userData.id!,
+          userData.token!,
+          userData.firstName!,
+          userData.lastName!,
+          userData.email!,
+          '',
+          userData.height!,
+          userData.weight!,
+          [mMass, mHealth, lWeight]
+              .where((e) => e != null)
+              .map((e) => e!)
+              .toList(),
+          userData.biotype!,
+          userData.sex!,
+        );
+      }
+    } catch (e) {
+      modalBuilderBottomAnimation(
+        context,
+        const SimplePopup(
+          message: "Email ou senha incorretos",
+        ),
+      );
+    }
   }
 }

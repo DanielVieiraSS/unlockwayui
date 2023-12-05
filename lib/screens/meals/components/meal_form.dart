@@ -8,6 +8,8 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:unlockway/components/app_bar.dart';
 import 'package:unlockway/components/buttons.dart';
 import 'package:unlockway/components/navigation.dart';
+import 'package:unlockway/components/popups.dart';
+import 'package:unlockway/components/simple_popup.dart';
 import 'package:unlockway/components/text_field.dart';
 import 'package:unlockway/constants.dart';
 import 'package:unlockway/handlers/meals.handlers.dart';
@@ -122,21 +124,34 @@ class _MealFormState extends State<MealForm> {
                     height: 48,
                     width: double.infinity,
                     onTap: () {
-                      createMealsAPI(
-                        context,
-                        userData.token!,
-                        userData.id!,
-                        nameController.text,
-                        category!,
-                        descriptionController.text,
-                        preparationMethodController.text,
-                        ingredientsSelected,
-                        selectedImagePath != ''
-                            ? File(selectedImagePath)
-                            : null,
-                      ).then((value) {
-                        widget.onSave();
-                      });
+                      if (nameController.text == "" ||
+                          descriptionController.text == "" ||
+                          preparationMethodController.text == "" ||
+                          category == null ||
+                          ingredientsSelected.isEmpty) {
+                        modalBuilderBottomAnimation(
+                          context,
+                          const SimplePopup(
+                            message: "Preencha todos os campos",
+                          ),
+                        );
+                      } else {
+                        createMealsAPI(
+                          context,
+                          userData.token!,
+                          userData.id!,
+                          nameController.text,
+                          category!,
+                          descriptionController.text,
+                          preparationMethodController.text,
+                          ingredientsSelected,
+                          selectedImagePath != ''
+                              ? File(selectedImagePath)
+                              : null,
+                        ).then((value) {
+                          widget.onSave();
+                        });
+                      }
                     },
                   ),
           ],
@@ -177,7 +192,7 @@ class _MealFormState extends State<MealForm> {
                     : widget.img != null
                         ? CachedNetworkImage(
                             imageUrl: widget.img!,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                             width: double.infinity,
                             height: 158,
                             placeholder: (context, url) => const Center(

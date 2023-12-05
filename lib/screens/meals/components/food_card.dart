@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -121,8 +122,8 @@ class _IngredientCardState extends State<IngredientCard> {
               width: 100,
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(6)),
-                child: Image.network(
-                  widget.food.photo,
+                child: CachedNetworkImage(
+                  imageUrl: widget.food.photo,
                   fit: BoxFit.cover,
                 ),
               ),

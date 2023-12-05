@@ -14,26 +14,33 @@ import 'package:unlockway/models/ingredients.dart';
 import 'package:unlockway/models/meals.dart';
 import 'package:unlockway/screens/meals/meals.dart';
 
-Future<List<MealsModel>> getMealsAPI(
-  BuildContext context,
-) async {
+Future<List<MealsModel>> getMealsAPI(BuildContext context) async {
   const String apiUrl =
       'https://unlockway.azurewebsites.net/api/v1/meals/findByUserId';
 
+  final uri = Uri.parse(apiUrl).replace(queryParameters: {'id': userData.id});
+
   final response = await http.get(
-    Uri.parse(apiUrl).replace(queryParameters: {
-      'id': userData.id,
-    }),
+    uri,
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8',
     },
   );
 
-  List mealList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return mealList.map((meal) {
-    return MealsModel.fromMap(meal);
-  }).toList();
+    List<dynamic> mealList = json.decode(responseBody);
+
+    List<MealsModel> meals = mealList.map((meal) {
+      return MealsModel.fromMap(meal);
+    }).toList();
+
+    return meals;
+  } else {
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
 
 Future<List<MealsModel>> getMealsByNameAPI(

@@ -28,12 +28,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Map homeData = {};
-  Map actualRoutine = {};
+  dynamic actualRoutine;
   bool _isLoading = true;
 
   Future<void> fetchAnalysis() async {
     Map result = await getHomeAnalysysAPI(context);
-    Map resultRoutine = await getRoutineOnUseAPI(context);
+    dynamic resultRoutine = await getRoutineOnUseAPI(context);
     setState(() {
       homeData = result;
       actualRoutine = resultRoutine;
@@ -212,7 +212,7 @@ class _HomeState extends State<Home> {
                           ),
                         ],
                       ),
-                    homeData['routines'] == 0
+                    actualRoutine == null
                         ? const NoRoutineCard()
                         : Column(
                             children: [

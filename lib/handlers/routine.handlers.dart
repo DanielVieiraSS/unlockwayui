@@ -34,7 +34,7 @@ Future<List<RoutineModel>> getRoutinesAPI(
   }).toList();
 }
 
-Future<Map<String, dynamic>> getRoutineOnUseAPI(
+getRoutineOnUseAPI(
   BuildContext context,
 ) async {
   const String apiUrl =
@@ -49,7 +49,13 @@ Future<Map<String, dynamic>> getRoutineOnUseAPI(
     },
   );
 
-  var routineList = json.decode(response.body);
+  dynamic routineList;
+
+  if (response.body == "Não há rotinas em uso") {
+    routineList = null;
+  } else {
+    routineList = json.decode(response.body);
+  }
 
   return routineList;
 }
