@@ -16,18 +16,29 @@ Future<List<HistoryModel>> getHistoryAPI(BuildContext context) async {
 
   final response = await http.get(Uri.parse(apiUrl), headers: {
     'Authorization': 'Bearer $sessionToken',
+    'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
   });
 
-  // print(response.body);
-  // print(response.statusCode);
-  List historyList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return historyList.map((history) {
-    return HistoryModel.fromMap(history);
-  }).toList();
+    // Agora, você pode decodificar o JSON
+    List<dynamic> historyList = json.decode(responseBody);
+
+    // Mapeia os dados para a lista de objetos HistoryModel
+    List<HistoryModel> history = historyList.map((history) {
+      return HistoryModel.fromMap(history);
+    }).toList();
+
+    return history;
+  } else {
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
 
-Future getHistoryIngestedAPI(
+Future<void> getHistoryIngestedAPI(
   BuildContext context,
   String routineId,
   String ingestedMealId,
@@ -41,6 +52,7 @@ Future getHistoryIngestedAPI(
     }),
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
     },
   );
 
@@ -48,7 +60,8 @@ Future getHistoryIngestedAPI(
     modalBuilderBottomAnimation(
       context,
       SimplePopup(
-        message: response.body,
+        message: utf8.decode(response
+            .bodyBytes), // Use utf8.decode para interpretar corretamente
       ),
     );
   }

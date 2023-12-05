@@ -12,49 +12,68 @@ import 'package:unlockway/models/relations/routine_meal_on_creation.dart';
 import 'package:unlockway/models/routine.dart';
 import 'package:unlockway/screens/routine/routine.dart';
 
-Future<List<RoutineModel>> getRoutinesAPI(
-  BuildContext context,
-) async {
+Future<List<RoutineModel>> getRoutinesAPI(BuildContext context) async {
   const String apiUrl =
       'https://unlockway.azurewebsites.net/api/v1/routines/userId';
 
+  final uri = Uri.parse(apiUrl).replace(queryParameters: {'id': userData.id});
+
   final response = await http.get(
-    Uri.parse(apiUrl).replace(queryParameters: {
-      'id': userData.id,
-    }),
+    uri,
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
     },
   );
 
-  List routineList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return routineList.map((routine) {
-    return RoutineModel.fromMap(routine);
-  }).toList();
+    // Agora, você pode decodificar o JSON
+    List<dynamic> routineList = json.decode(responseBody);
+
+    // Mapeia os dados para a lista de objetos RoutineModel
+    List<RoutineModel> routines = routineList.map((routine) {
+      return RoutineModel.fromMap(routine);
+    }).toList();
+
+    return routines;
+  } else {
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
 
-getRoutineOnUseAPI(
-  BuildContext context,
-) async {
+Future<dynamic> getRoutineOnUseAPI(BuildContext context) async {
   const String apiUrl =
       'https://unlockway.azurewebsites.net/api/v1/routines/inusage';
 
+  final uri =
+      Uri.parse(apiUrl).replace(queryParameters: {'userId': userData.id});
+
   final response = await http.get(
-    Uri.parse(apiUrl).replace(queryParameters: {
-      'userId': userData.id,
-    }),
+    uri,
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
     },
   );
 
   dynamic routineList;
 
-  if (response.body == "Não há rotinas em uso") {
-    routineList = null;
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
+
+    if (responseBody == "Não há rotinas em uso") {
+      routineList = null;
+    } else {
+      routineList = json.decode(responseBody);
+    }
   } else {
-    routineList = json.decode(response.body);
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
   }
 
   return routineList;
@@ -260,19 +279,34 @@ Future<List<RoutineModel>> getRoutineByNameAPI(
   const String apiUrl =
       'https://unlockway.azurewebsites.net/api/v1/routines/findByName';
 
+  final uri = Uri.parse(apiUrl).replace(queryParameters: {
+    'userId': userData.id,
+    'name': name,
+  });
+
   final response = await http.get(
-    Uri.parse(apiUrl).replace(queryParameters: {
-      'userId': userData.id,
-      'name': name,
-    }),
+    uri,
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
     },
   );
 
-  List routineList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return routineList.map((routine) {
-    return RoutineModel.fromMap(routine);
-  }).toList();
+    // Agora, você pode decodificar o JSON
+    List<dynamic> routineList = json.decode(responseBody);
+
+    // Mapeia os dados para a lista de objetos RoutineModel
+    List<RoutineModel> routines = routineList.map((routine) {
+      return RoutineModel.fromMap(routine);
+    }).toList();
+
+    return routines;
+  } else {
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }

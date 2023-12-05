@@ -38,7 +38,10 @@ Future<void> loginAPI(
 
     try {
       final response = await http.post(Uri.parse(apiUrl),
-          headers: {"Content-type": "application/json"}, body: body);
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: body);
 
       Map<Object?, Object?> user = json.decode(response.body);
 

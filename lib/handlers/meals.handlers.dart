@@ -57,14 +57,23 @@ Future<List<MealsModel>> getMealsByNameAPI(
     }),
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8',
     },
   );
 
-  List mealList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return mealList.map((meal) {
-    return MealsModel.fromMap(meal);
-  }).toList();
+    List<dynamic> mealList = json.decode(responseBody);
+
+    List<MealsModel> meals = mealList.map((meal) {
+      return MealsModel.fromMap(meal);
+    }).toList();
+
+    return meals;
+  } else {
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
 
 Future<void> createMealsAPI(

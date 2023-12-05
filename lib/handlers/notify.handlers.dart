@@ -17,12 +17,21 @@ Future<List<NotifyModel>> getNotifyAPI(
     }),
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8',
     },
   );
 
-  List notifyList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return notifyList.map((notify) {
-    return NotifyModel.fromMap(notify);
-  }).toList();
+    List<dynamic> notifyList = json.decode(responseBody);
+
+    List<NotifyModel> notify = notifyList.map((notify) {
+      return NotifyModel.fromMap(notify);
+    }).toList();
+
+    return notify;
+  } else {
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }

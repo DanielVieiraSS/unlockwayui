@@ -166,7 +166,9 @@ class _HomeState extends State<Home> {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                        Theme.of(context).colorScheme.onBackground,
+                        homeData['notifications'] == 0
+                            ? Theme.of(context).colorScheme.onBackground
+                            : Color(danger),
                       ),
                       padding: const MaterialStatePropertyAll(
                         EdgeInsets.all(8),
@@ -177,10 +179,15 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    icon: Icon(
-                      Icons.notifications_none_outlined,
-                      color: Theme.of(context).colorScheme.outline,
-                    ),
+                    icon: homeData['notifications'] == 0
+                        ? Icon(
+                            Icons.notifications_none_outlined,
+                            color: Theme.of(context).colorScheme.outline,
+                          )
+                        : Icon(
+                            Icons.notifications_active,
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
                   ),
                 ],
               ),

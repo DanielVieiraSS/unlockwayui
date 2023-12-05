@@ -14,13 +14,26 @@ Future<List<IngredientModel>> getIngredientsAPI(BuildContext context) async {
 
   final response = await http.get(Uri.parse(apiUrl), headers: {
     'Authorization': 'Bearer $sessionToken',
+    'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
   });
 
-  List ingredientsList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return ingredientsList.map((ingredient) {
-    return IngredientModel.fromMap(ingredient);
-  }).toList();
+    // Agora, você pode decodificar o JSON
+    List<dynamic> ingredientsList = json.decode(responseBody);
+
+    // Mapeia os dados para a lista de objetos IngredientModel
+    List<IngredientModel> ingredients = ingredientsList.map((ingredient) {
+      return IngredientModel.fromMap(ingredient);
+    }).toList();
+
+    return ingredients;
+  } else {
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
 
 Future<List<IngredientModel>> getIngredientsByNameAPI(
@@ -30,19 +43,34 @@ Future<List<IngredientModel>> getIngredientsByNameAPI(
   const String apiUrl =
       'https://unlockway.azurewebsites.net/api/v1/ingredients/findByName';
 
+  final uri = Uri.parse(apiUrl).replace(queryParameters: {
+    'userId': userData.id,
+    'name': name,
+  });
+
   final response = await http.get(
-    Uri.parse(apiUrl).replace(queryParameters: {
-      'userId': userData.id,
-      'name': name,
-    }),
+    uri,
     headers: {
       'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8', // Adicionado Accept-Charset
     },
   );
 
-  List ingredientList = json.decode(response.body);
+  if (response.statusCode == 200) {
+    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
+    String responseBody = utf8.decode(response.bodyBytes);
 
-  return ingredientList.map((ingredient) {
-    return IngredientModel.fromMap(ingredient);
-  }).toList();
+    // Agora, você pode decodificar o JSON
+    List<dynamic> ingredientList = json.decode(responseBody);
+
+    // Mapeia os dados para a lista de objetos IngredientModel
+    List<IngredientModel> ingredients = ingredientList.map((ingredient) {
+      return IngredientModel.fromMap(ingredient);
+    }).toList();
+
+    return ingredients;
+  } else {
+    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
