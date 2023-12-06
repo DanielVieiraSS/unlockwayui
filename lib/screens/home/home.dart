@@ -27,7 +27,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Map homeData = {};
+  Map homeData = {
+    "meals": 0,
+    "routines": 0,
+    "notifications": 0,
+  };
   dynamic actualRoutine;
   bool _isLoading = true;
 
@@ -196,12 +200,12 @@ class _HomeState extends State<Home> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         margin: const EdgeInsets.all(13),
-        child: SingleChildScrollView(
-          child: _isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Column(
+        child: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (homeData['meals'] == 0 || homeData['routines'] == 0)
@@ -294,7 +298,7 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-        ),
+              ),
       ),
     );
   }

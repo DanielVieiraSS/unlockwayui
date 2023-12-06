@@ -62,18 +62,12 @@ Future<dynamic> getRoutineOnUseAPI(BuildContext context) async {
 
   dynamic routineList;
 
-  if (response.statusCode == 200) {
-    // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
-    String responseBody = utf8.decode(response.bodyBytes);
+  String responseBody = utf8.decode(response.bodyBytes);
 
-    if (responseBody == "Não há rotinas em uso") {
-      routineList = null;
-    } else {
-      routineList = json.decode(responseBody);
-    }
+  if (responseBody == "Não há rotinas em uso") {
+    routineList = null;
   } else {
-    // Se a solicitação não foi bem-sucedida, trate o erro (por exemplo, lançar uma exceção)
-    throw Exception('Falha na solicitação: ${response.statusCode}');
+    routineList = json.decode(responseBody);
   }
 
   return routineList;
