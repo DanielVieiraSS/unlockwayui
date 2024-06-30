@@ -6,7 +6,7 @@ var registerAppBar = (BuildContext context, [VoidCallback? goBack]) {
     surfaceTintColor: Colors.transparent,
     leading: TextButton.icon(
       style: const ButtonStyle(
-        overlayColor: MaterialStatePropertyAll(Colors.transparent),
+        overlayColor: WidgetStatePropertyAll(Colors.transparent),
       ),
       onPressed: () {
         if (goBack != null) {
@@ -43,6 +43,6 @@ var registerAppBar = (BuildContext context, [VoidCallback? goBack]) {
     automaticallyImplyLeading: true,
     elevation: 0,
     titleSpacing: 0.0,
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
   );
 };

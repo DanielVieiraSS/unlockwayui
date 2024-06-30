@@ -288,7 +288,7 @@ class _AboutPageState extends State<AboutPage> {
               ),
             ),
             Container(
-              color: Theme.of(context).colorScheme.background.withOpacity(0.90),
+              color: Theme.of(context).colorScheme.surface.withOpacity(0.90),
             ),
             PageView(
               controller: pageController,
@@ -305,7 +305,7 @@ class _AboutPageState extends State<AboutPage> {
               right: 50,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(

@@ -25,7 +25,7 @@ class HistoryDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: registerAppBar(context),
       body: Container(
           margin: const EdgeInsets.all(10),
@@ -60,7 +60,7 @@ class HistoryDetails extends StatelessWidget {
                               Container(
                                 decoration: BoxDecoration(
                                   color:
-                                      Theme.of(context).colorScheme.background,
+                                      Theme.of(context).colorScheme.surface,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 padding: const EdgeInsets.all(8),

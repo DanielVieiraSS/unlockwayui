@@ -63,7 +63,7 @@ class HomeGraph extends StatelessWidget {
                       data: data[0],
                       height: percentageList[0],
                       color: percentageList[0] == null
-                          ? Theme.of(context).colorScheme.onBackground
+                          ? Theme.of(context).colorScheme.onSurface
                           : Color(primary),
                       day: "S",
                     ),
@@ -71,42 +71,42 @@ class HomeGraph extends StatelessWidget {
                         data: data[1],
                         height: percentageList[1],
                         color: percentageList[1] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "T"),
                     Bar(
                         data: data[2],
                         height: percentageList[2],
                         color: percentageList[2] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "Q"),
                     Bar(
                         data: data[3],
                         height: percentageList[3],
                         color: percentageList[3] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "Q"),
                     Bar(
                         data: data[4],
                         height: percentageList[4],
                         color: percentageList[4] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "S"),
                     Bar(
                         data: data[5],
                         height: percentageList[5],
                         color: percentageList[5] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "S"),
                     Bar(
                         data: data[6],
                         height: percentageList[6],
                         color: percentageList[6] == null
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(primary),
                         day: "D"),
                   ],

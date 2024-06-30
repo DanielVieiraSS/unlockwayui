@@ -162,7 +162,7 @@ class _NewRoutineState extends State<NewRoutine> {
                     ),
                   ],
                 )),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: registerAppBar(context),
       body: Container(
         margin: const EdgeInsets.symmetric(
@@ -325,10 +325,10 @@ class _NewRoutineState extends State<NewRoutine> {
                         ),
                       ),
                       style: ButtonStyle(
-                        iconColor: MaterialStatePropertyAll(
+                        iconColor: WidgetStatePropertyAll(
                           Theme.of(context).colorScheme.primary,
                         ),
-                        iconSize: const MaterialStatePropertyAll(16),
+                        iconSize: const WidgetStatePropertyAll(16),
                       ),
                     ),
                   ),

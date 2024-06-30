@@ -9,7 +9,7 @@ Future<void> modalBuilderBottomAnimation(
     isScrollControlled: true,
     context: context,
     useSafeArea: true,
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     elevation: 0,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -30,7 +30,7 @@ Future<void> modalBuilderBottomAnimation(
               width: 180,
               height: 6,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
                 borderRadius: BorderRadius.circular(9999),
               ),
             ),

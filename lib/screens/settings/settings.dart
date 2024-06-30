@@ -45,7 +45,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 60),
         child: SafeArea(

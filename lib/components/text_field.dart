@@ -56,8 +56,8 @@ class GenericTextField extends StatelessWidget {
         ),
         hintStyle: const TextStyle(color: Color(0xFF616B7C)),
         filled: true,
-        fillColor: Theme.of(context).colorScheme.onBackground,
-        focusColor: Theme.of(context).colorScheme.onBackground,
+        fillColor: Theme.of(context).colorScheme.onSurface,
+        focusColor: Theme.of(context).colorScheme.onSurface,
       ),
       style: TextStyle(
         fontFamily: "Inter",
@@ -135,8 +135,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
         ),
         hintStyle: const TextStyle(color: Color(0xFF616B7C)),
         filled: true,
-        fillColor: Theme.of(context).colorScheme.onBackground,
-        focusColor: Theme.of(context).colorScheme.onBackground,
+        fillColor: Theme.of(context).colorScheme.onSurface,
+        focusColor: Theme.of(context).colorScheme.onSurface,
       ),
       style: TextStyle(
         fontFamily: "Inter",
@@ -200,8 +200,8 @@ class PasswordTextField extends StatelessWidget {
         ),
         hintStyle: const TextStyle(color: Color(0xFF616B7C)),
         filled: true,
-        fillColor: Theme.of(context).colorScheme.onBackground,
-        focusColor: Theme.of(context).colorScheme.onBackground,
+        fillColor: Theme.of(context).colorScheme.onSurface,
+        focusColor: Theme.of(context).colorScheme.onSurface,
       ),
       style: TextStyle(
         fontFamily: "Inter",
@@ -253,8 +253,8 @@ class TextFieldMultline extends StatelessWidget {
           color: Color(0xFF616B7C),
         ),
         filled: true,
-        fillColor: Theme.of(context).colorScheme.onBackground,
-        focusColor: Theme.of(context).colorScheme.onBackground,
+        fillColor: Theme.of(context).colorScheme.onSurface,
+        focusColor: Theme.of(context).colorScheme.onSurface,
       ),
       style: TextStyle(
         fontFamily: "Inter",

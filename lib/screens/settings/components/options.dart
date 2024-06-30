@@ -31,7 +31,7 @@ class SettingsOption extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.onSurface,
             borderRadius: borderRadius,
           ),
           child: Row(

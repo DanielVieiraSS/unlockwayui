@@ -23,9 +23,9 @@ class MealHistoryCard extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
         border: Border.all(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
           width: 2,
         ),
       ),

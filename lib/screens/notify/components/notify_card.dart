@@ -28,7 +28,7 @@ class _NotifyCardState extends State<NotifyCard> {
       width: double.infinity,
       height: 74,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
       child: InkWell(
         onTap: widget.func,

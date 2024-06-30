@@ -72,17 +72,17 @@ class _MealsState extends State<Meals> {
           );
         },
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: WidgetStatePropertyAll(
             Color(primarydark),
           ),
           iconColor:
-              MaterialStatePropertyAll(Theme.of(context).colorScheme.outline),
+              WidgetStatePropertyAll(Theme.of(context).colorScheme.outline),
         ),
         iconSize: 24,
         icon: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBar: const UBottomNavigator("Meal"),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(150),
@@ -129,7 +129,7 @@ class _MealsState extends State<Meals> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           filled: true,
-                          fillColor: Theme.of(context).colorScheme.onBackground,
+                          fillColor: Theme.of(context).colorScheme.onSurface,
                           contentPadding: const EdgeInsets.all(10.0),
                           hintText: "Buscar",
                           suffixIcon: Icon(

@@ -99,14 +99,14 @@ class RegisterStep1 extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           padding: const EdgeInsets.symmetric(
             vertical: 4,
             horizontal: 8,
           ),
           child: DropdownButton<String>(
-            dropdownColor: Theme.of(context).colorScheme.onBackground,
+            dropdownColor: Theme.of(context).colorScheme.onSurface,
             borderRadius: BorderRadius.circular(6),
             isExpanded: true,
             value: sex,
@@ -156,7 +156,7 @@ class RegisterStep1 extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(6),
               borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
                 width: 2,
               ),
             ),
@@ -174,11 +174,11 @@ class RegisterStep1 extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
             ),
             filled: true,
-            fillColor: Theme.of(context).colorScheme.onBackground,
-            focusColor: Theme.of(context).colorScheme.onBackground,
+            fillColor: Theme.of(context).colorScheme.onSurface,
+            focusColor: Theme.of(context).colorScheme.onSurface,
           ),
           enabled: true,
-          selected_values_style: TextStyle(
+          selectedValuesStyle: TextStyle(
             color: Theme.of(context).colorScheme.outline,
           ),
           onChanged: onChangeGoals,
@@ -203,14 +203,14 @@ class RegisterStep1 extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            color: Theme.of(context).colorScheme.onBackground,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           padding: const EdgeInsets.symmetric(
             vertical: 4,
             horizontal: 8,
           ),
           child: DropdownButton<String>(
-            dropdownColor: Theme.of(context).colorScheme.onBackground,
+            dropdownColor: Theme.of(context).colorScheme.onSurface,
             hint: const Text("EX: Endomorfo"),
             borderRadius: BorderRadius.circular(6),
             isExpanded: true,

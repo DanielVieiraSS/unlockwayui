@@ -86,7 +86,7 @@ class RoutineMealCard extends StatelessWidget {
         height: 100,
         margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.all(16),
@@ -99,7 +99,7 @@ class RoutineMealCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                   width: 2,
                 ),
               ),
@@ -107,7 +107,7 @@ class RoutineMealCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6),
                 child: imgURL == null || imgURL == ""
                     ? Container(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                         width: 111,
                         height: 145,
                       )

@@ -46,7 +46,7 @@ class UBottomNavigator extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

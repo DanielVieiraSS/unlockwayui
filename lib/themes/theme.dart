@@ -16,8 +16,8 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme.light(
     primary: Color(primarydark),
-    background: Color(lightBg),
-    onBackground: Color(lightBgdark),
+    surface: Color(lightBg),
+    onSurface: Color(lightBgdark),
     outline: Color(darkBglight),
   ),
 );
@@ -34,8 +34,8 @@ ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: ColorScheme.dark(
     primary: Color(primary),
-    background: Color(darkBgdark),
-    onBackground: Color(darkBglight),
+    surface: Color(darkBgdark),
+    onSurface: Color(darkBglight),
     outline: Colors.white,
   ),
 );

@@ -71,14 +71,14 @@ class _RoutineMealPopupState extends State<RoutineMealPopup> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               padding: const EdgeInsets.symmetric(
                 vertical: 4,
                 horizontal: 8,
               ),
               child: DropdownButton<String>(
-                dropdownColor: Theme.of(context).colorScheme.onBackground,
+                dropdownColor: Theme.of(context).colorScheme.onSurface,
                 hint: const Text("EX: Almoço"),
                 borderRadius: BorderRadius.circular(6),
                 isExpanded: true,
@@ -132,14 +132,14 @@ class _RoutineMealPopupState extends State<RoutineMealPopup> {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               padding: const EdgeInsets.symmetric(
                 vertical: 4,
                 horizontal: 8,
               ),
               child: DropdownButton<String>(
-                dropdownColor: Theme.of(context).colorScheme.onBackground,
+                dropdownColor: Theme.of(context).colorScheme.onSurface,
                 hint: const Text(""),
                 value: selectedMeal,
                 borderRadius: BorderRadius.circular(6),
@@ -194,7 +194,7 @@ class _RoutineMealPopupState extends State<RoutineMealPopup> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 padding: const EdgeInsets.symmetric(
                   vertical: 4,

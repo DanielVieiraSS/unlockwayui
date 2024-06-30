@@ -224,7 +224,7 @@ class FoodInfoPopup extends StatelessWidget {
                             horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Theme.of(context).colorScheme.onBackground,
+                            color: Theme.of(context).colorScheme.onSurface,
                             width: 2,
                           ),
                           borderRadius: const BorderRadius.horizontal(

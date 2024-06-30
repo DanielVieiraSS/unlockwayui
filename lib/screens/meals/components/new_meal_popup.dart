@@ -30,7 +30,7 @@ class NewMealPopup extends StatelessWidget {
               width: double.infinity,
               height: 95,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
@@ -84,7 +84,7 @@ class NewMealPopup extends StatelessWidget {
               width: double.infinity,
               height: 95,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(8),
                   bottomRight: Radius.circular(8),

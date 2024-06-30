@@ -17,7 +17,7 @@ class _ThemeDialogState extends State<ThemeDialog> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
       height: 200,
       width: 300,

@@ -94,24 +94,24 @@ class RoutineCard extends StatelessWidget {
                 children: [
                   TextButton(
                     style: ButtonStyle(
-                        fixedSize: const MaterialStatePropertyAll(
+                        fixedSize: const WidgetStatePropertyAll(
                           Size(77, 30),
                         ),
                         backgroundColor: using
-                            ? const MaterialStatePropertyAll(
+                            ? const WidgetStatePropertyAll(
                                 Color(0XFFF7BEA1),
                               )
-                            : const MaterialStatePropertyAll(
+                            : const WidgetStatePropertyAll(
                                 Colors.transparent,
                               ),
                         side: using
-                            ? const MaterialStatePropertyAll(
+                            ? const WidgetStatePropertyAll(
                                 BorderSide(
                                   width: 0,
                                   color: Colors.transparent,
                                 ),
                               )
-                            : MaterialStatePropertyAll(
+                            : WidgetStatePropertyAll(
                                 BorderSide(
                                   width: 2,
                                   color: Color(darkBgdark),

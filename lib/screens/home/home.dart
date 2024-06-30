@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
     UserModel user = userData;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBar: const UBottomNavigator("Home"),
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
@@ -169,15 +169,15 @@ class _HomeState extends State<Home> {
                       );
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
+                      backgroundColor: WidgetStatePropertyAll(
                         homeData['notifications'] == 0
-                            ? Theme.of(context).colorScheme.onBackground
+                            ? Theme.of(context).colorScheme.onSurface
                             : Color(danger),
                       ),
-                      padding: const MaterialStatePropertyAll(
+                      padding: const WidgetStatePropertyAll(
                         EdgeInsets.all(8),
                       ),
-                      shape: MaterialStatePropertyAll(
+                      shape: WidgetStatePropertyAll(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),

@@ -12,7 +12,7 @@ class NoRoutineCard extends StatelessWidget {
       height: 177,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
-        color: Theme.of(context).colorScheme.onBackground,
+        color: Theme.of(context).colorScheme.onSurface,
         border: Border.all(
           color: const Color(0xFF586274),
         ),

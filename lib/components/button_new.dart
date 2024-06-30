@@ -11,10 +11,10 @@ class NewBTN extends StatelessWidget {
     return IconButton(
       onPressed: () {},
       style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
           Color(primarydark),
         ),
-        iconColor: const MaterialStatePropertyAll(Colors.white),
+        iconColor: const WidgetStatePropertyAll(Colors.white),
       ),
       iconSize: 24,
       icon: const Icon(Icons.add),

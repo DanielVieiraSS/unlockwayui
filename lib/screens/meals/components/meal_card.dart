@@ -51,7 +51,7 @@ class UCard extends StatelessWidget {
         width: 177,
         height: 288,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
           borderRadius: const BorderRadius.all(
             Radius.circular(6),
           ),

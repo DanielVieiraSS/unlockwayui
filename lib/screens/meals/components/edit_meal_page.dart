@@ -100,7 +100,7 @@ class _NewMealState extends State<NewMeal> {
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: registerAppBar(context),
       body: Container(
         margin: const EdgeInsets.all(15),
@@ -121,7 +121,7 @@ class _NewMealState extends State<NewMeal> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
                           border: Border.all(
-                            color: Theme.of(context).colorScheme.onBackground,
+                            color: Theme.of(context).colorScheme.onSurface,
                             width: 2,
                           ),
                         ),
@@ -133,7 +133,7 @@ class _NewMealState extends State<NewMeal> {
                         ),
                       )
                     : DottedBorder(
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                         borderType: BorderType.RRect,
                         radius: const Radius.circular(12),
                         padding: const EdgeInsets.all(6),
@@ -190,14 +190,14 @@ class _NewMealState extends State<NewMeal> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 padding: const EdgeInsets.symmetric(
                   vertical: 4,
                   horizontal: 8,
                 ),
                 child: DropdownButton<String>(
-                  dropdownColor: Theme.of(context).colorScheme.onBackground,
+                  dropdownColor: Theme.of(context).colorScheme.onSurface,
                   hint: const Text("EX: Almoço"),
                   borderRadius: BorderRadius.circular(6),
                   isExpanded: true,
@@ -332,7 +332,7 @@ class _NewMealState extends State<NewMeal> {
       enableDrag: true,
       context: context,
       useSafeArea: true,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       elevation: 0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -349,7 +349,7 @@ class _NewMealState extends State<NewMeal> {
               width: 180,
               height: 6,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onBackground,
+                color: Theme.of(context).colorScheme.onSurface,
                 borderRadius: BorderRadius.circular(9999),
               ),
             ),
@@ -377,7 +377,7 @@ class _NewMealState extends State<NewMeal> {
                       width: double.infinity,
                       height: 95,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(8),
                           topRight: Radius.circular(8),
@@ -426,7 +426,7 @@ class _NewMealState extends State<NewMeal> {
                       width: double.infinity,
                       height: 95,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                         borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(8),
                           bottomRight: Radius.circular(8),

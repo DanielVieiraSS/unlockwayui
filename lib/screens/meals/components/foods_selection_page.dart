@@ -114,7 +114,7 @@ class _FoodSelectionPageState extends State<FoodSelectionPage> {
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: registerAppBar(context),
       body: Container(
         margin: const EdgeInsets.all(15),
@@ -149,7 +149,7 @@ class _FoodSelectionPageState extends State<FoodSelectionPage> {
                                 ),
                                 filled: true,
                                 fillColor:
-                                    Theme.of(context).colorScheme.onBackground,
+                                    Theme.of(context).colorScheme.onSurface,
                                 contentPadding: const EdgeInsets.all(10.0),
                                 hintText: "Buscar",
                                 suffixIcon: Icon(

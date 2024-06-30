@@ -74,11 +74,11 @@ class _RoutineState extends State<Routine> {
               );
         },
         style: ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
+          backgroundColor: WidgetStatePropertyAll(
             Color(primarydark),
           ),
           iconColor:
-              MaterialStatePropertyAll(Theme.of(context).colorScheme.outline),
+              WidgetStatePropertyAll(Theme.of(context).colorScheme.outline),
         ),
         iconSize: 24,
         icon: const Icon(Icons.add),
@@ -129,7 +129,7 @@ class _RoutineState extends State<Routine> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           filled: true,
-                          fillColor: Theme.of(context).colorScheme.onBackground,
+                          fillColor: Theme.of(context).colorScheme.onSurface,
                           contentPadding: const EdgeInsets.all(10.0),
                           hintText: "Buscar",
                           suffixIcon: Icon(
@@ -155,7 +155,7 @@ class _RoutineState extends State<Routine> {
           ),
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBar: const UBottomNavigator("Routine"),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -206,7 +206,7 @@ class _RoutineState extends State<Routine> {
                                     meals: filteredMeals,
                                     color: Theme.of(context)
                                         .colorScheme
-                                        .onBackground,
+                                        .onSurface,
                                     using: routineIndex.inUsage,
                                   );
                                 },

@@ -27,7 +27,7 @@ class PendingActions extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: Theme.of(context).colorScheme.primary),
           borderRadius: BorderRadius.circular(6),
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
         padding: const EdgeInsets.all(6),
         child: SizedBox(
@@ -84,7 +84,7 @@ class PendingPopup extends StatelessWidget {
                 PhosphorIcons.checkCircle(PhosphorIconsStyle.regular),
                 size: 45.0,
                 color: meals == 0
-                    ? Theme.of(context).colorScheme.onBackground
+                    ? Theme.of(context).colorScheme.onSurface
                     : Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(
@@ -118,7 +118,7 @@ class PendingPopup extends StatelessWidget {
                 PhosphorIcons.checkCircle(PhosphorIconsStyle.regular),
                 size: 45.0,
                 color: routines == 0
-                    ? Theme.of(context).colorScheme.onBackground
+                    ? Theme.of(context).colorScheme.onSurface
                     : Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(

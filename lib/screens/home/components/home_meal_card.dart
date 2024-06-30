@@ -59,7 +59,7 @@ class HomeMealCard extends StatelessWidget {
         height: 219,
         padding: const EdgeInsets.only(bottom: 8),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
           borderRadius: const BorderRadius.all(
             Radius.circular(6),
           ),
@@ -120,7 +120,7 @@ class HomeMealCard extends StatelessWidget {
                   description,
                   style: TextStyle(
                     overflow: TextOverflow.ellipsis,
-                    color: Theme.of(context).colorScheme.background,
+                    color: Theme.of(context).colorScheme.surface,
                     fontSize: 12,
                     fontFamily: "Inter",
                   ),
