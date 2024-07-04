@@ -25,8 +25,7 @@ Future<void> loginAPI(
       ),
     );
   } else {
-    const String apiUrl =
-        'https://unlockway.azurewebsites.net/api/v1/auth/authenticate';
+    const String apiUrl = 'http://localhost:8080/user/login';
 
     Map payload = {
       "email": email,
@@ -42,6 +41,10 @@ Future<void> loginAPI(
             "Content-type": "application/json",
           },
           body: body);
+
+      var test = base64Decode(response.body);
+
+      print(test);
 
       Map<Object?, Object?> user = json.decode(response.body);
 
@@ -84,6 +87,7 @@ Future<void> loginAPI(
         );
       }
     } catch (e) {
+      print(e);
       modalBuilderBottomAnimation(
         context,
         const SimplePopup(

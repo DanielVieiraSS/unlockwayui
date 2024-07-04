@@ -1,12 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:unlockway/components/buttons.dart';
 import 'package:unlockway/components/navigation.dart';
 import 'package:unlockway/components/popups.dart';
-import 'package:unlockway/handlers/google_auth.dart';
 import 'package:unlockway/handlers/login.handlers.dart';
 import 'package:unlockway/screens/login/components/login_popup.dart';
 import 'package:unlockway/screens/register/register.dart';
@@ -20,8 +18,8 @@ class InitialLogin extends StatefulWidget {
 }
 
 class _InitialLoginState extends State<InitialLogin> {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  User? user;
+  //final FirebaseAuth auth = FirebaseAuth.instance;
+  //User? user;
 
   final email = TextEditingController();
   final password = TextEditingController();
@@ -29,11 +27,11 @@ class _InitialLoginState extends State<InitialLogin> {
   @override
   void initState() {
     super.initState();
-    auth.authStateChanges().listen((event) {
-      setState(() {
-        user = event;
-      });
-    });
+    // auth.authStateChanges().listen((event) {
+    //   setState(() {
+    //     user = event;
+    //   });
+    // });
     getUserLogged();
   }
 
@@ -42,7 +40,7 @@ class _InitialLoginState extends State<InitialLogin> {
     final String? email = prefs.getString('Email');
     final String? password = prefs.getString('Password');
 
-    if (email != null || email != "") {
+    if (email != null || password != null) {
       loginAPI(
         context,
         email!,
@@ -192,22 +190,22 @@ class _InitialLoginState extends State<InitialLogin> {
 
   void handleGoogleSignIn() {
     try {
-      GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
-      auth.signInWithProvider(googleAuthProvider).then((value) {}).then(
-            (value) => loginGoogleAPI(
-              context,
-              email: user!.email,
-              name: user!.displayName,
-              password: user!.uid,
-            ),
-          );
+      // GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
+      // auth.signInWithProvider(googleAuthProvider).then((value) {}).then(
+      //       (value) => loginGoogleAPI(
+      //         context,
+      //         email: user!.email,
+      //         name: user!.displayName,
+      //         password: user!.uid,
+      //       ),
+      //     );
     } catch (e) {
-      navigationPageRightAnimation(
-        RegisterScreen(
-          googleEmail: user!.email,
-          googleId: user!.uid,
-        ),
-      );
+      // navigationPageRightAnimation(
+      //   RegisterScreen(
+      //     googleEmail: user!.email,
+      //     googleId: user!.uid,
+      //   ),
+      // );
     }
   }
 }
