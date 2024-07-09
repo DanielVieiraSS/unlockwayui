@@ -42,10 +42,6 @@ Future<void> loginAPI(
           },
           body: body);
 
-      var test = base64Decode(response.body);
-
-      print(test);
-
       Map<Object?, Object?> user = json.decode(response.body);
 
       userData = UserModel.fromMap(user);

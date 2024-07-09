@@ -9,8 +9,7 @@ import 'package:unlockway/models/ingredients.dart';
 
 Future<List<IngredientModel>> getIngredientsAPI(BuildContext context) async {
   var sessionToken = userData.token;
-  const String apiUrl =
-      'https://unlockway.azurewebsites.net/api/v1/ingredients';
+  const String apiUrl = 'http://localhost:8080/dishes/get/ingredients';
 
   final response = await http.get(Uri.parse(apiUrl), headers: {
     'Authorization': 'Bearer $sessionToken',
