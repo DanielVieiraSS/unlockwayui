@@ -5,20 +5,25 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:unlockway/constants.dart';
+import 'package:unlockway/models/homeData.dart';
 
-Future<Map<String, dynamic>> getHomeAnalysysAPI(BuildContext context) async {
-  var sessionToken = userData.token;
-  const String apiUrl = 'https://unlockway.azurewebsites.net/api/v1/analysis';
+Future<HomeDataModel> getHomeAnalysysAPI(BuildContext context) async {
+  const String apiUrl = 'http://localhost:8080/home/homeData';
 
   final response = await http.get(
-      Uri.parse(apiUrl).replace(queryParameters: {
-        'userId': userData.id,
-      }),
-      headers: {
-        'Authorization': 'Bearer $sessionToken',
-      });
+    Uri.parse(apiUrl),
+    headers: {
+      'Authorization': 'Bearer ${userData.token}',
+      'Accept-Charset': 'UTF-8',
+    },
+  );
 
-  var analysisResult = json.decode(response.body);
+  if (response.statusCode == 200) {
+    String responseBody = utf8.decode(response.bodyBytes);
+    Map<String, dynamic> responseData = json.decode(responseBody)['data'];
 
-  return analysisResult;
+    return HomeDataModel.fromMap(responseData);
+  } else {
+    throw Exception('Falha na solicitação: ${response.statusCode}');
+  }
 }
