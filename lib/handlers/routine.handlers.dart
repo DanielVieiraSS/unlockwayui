@@ -28,7 +28,7 @@ Future<List<RoutineModel>> getRoutinesAPI(BuildContext context) async {
   if (response.statusCode == 200) {
     // Use o utf8.decode para garantir que a codificação seja interpretada corretamente
     String responseBody = utf8.decode(response.bodyBytes);
-    print(responseBody);
+
     // Agora, você pode decodificar o JSON
     List<dynamic> routineList = json.decode(responseBody);
 
@@ -61,7 +61,7 @@ Future<dynamic> getRoutineOnUseAPI(BuildContext context) async {
   dynamic routineList;
 
   String responseBody = utf8.decode(response.bodyBytes);
-  print(responseBody);
+
   if (responseBody == "Não há rotinas em uso") {
     routineList = null;
   } else {

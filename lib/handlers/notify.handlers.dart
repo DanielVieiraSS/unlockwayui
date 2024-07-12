@@ -8,8 +8,7 @@ import 'package:http/http.dart' as http;
 Future<List<NotifyModel>> getNotifyAPI(
   BuildContext context,
 ) async {
-  const String apiUrl =
-      'https://unlockway.azurewebsites.net/api/v1/notifications/findByUserId';
+  const String apiUrl = 'http://localhost:8080/notify/get';
 
   final response = await http.get(
     Uri.parse(apiUrl).replace(queryParameters: {

@@ -83,7 +83,6 @@ Future<void> loginAPI(
         );
       }
     } catch (e) {
-      print(e);
       modalBuilderBottomAnimation(
         context,
         const SimplePopup(
