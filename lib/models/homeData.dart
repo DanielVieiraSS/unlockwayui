@@ -12,13 +12,13 @@ class HomeDataModel {
   final List<double?> weekCalories;
 
   factory HomeDataModel.fromMap(Map<String, dynamic> map) {
-    print(map['weekCalories']);
-    List<double?> weekCaloriesDynamic = map['weekCalories'];
+    // Converting the dynamic list to List<double?>
+    List<dynamic> weekCaloriesDynamic = map['weekCalories'];
     List<double?> weekCaloriesList = weekCaloriesDynamic.map((calorie) {
       if (calorie == null) {
         return null;
       } else {
-        return calorie.toDouble();
+        return (calorie as num).toDouble();
       }
     }).toList();
 
