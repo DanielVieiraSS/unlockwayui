@@ -23,7 +23,6 @@ class _NotifyCardState extends State<NotifyCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 2),
       padding: const EdgeInsets.all(16),
       width: double.infinity,
       height: 74,

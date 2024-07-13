@@ -74,22 +74,17 @@ class _NotifyPageState extends State<NotifyPage> {
               builder: (BuildContext context, BoxConstraints constraints) {
                 return CustomScrollView(
                   slivers: <Widget>[
-                    const SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 15,
-                        width: double.infinity,
-                      ),
-                    ),
                     SliverToBoxAdapter(
                       child: ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxHeight: constraints.maxHeight - 15,
+                          maxHeight: constraints.maxHeight,
                         ),
                         child: GridView.builder(
+                          padding: const EdgeInsets.only(top: 15),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 1,
-                            childAspectRatio: 5,
+                            childAspectRatio: 4,
                           ),
                           shrinkWrap: true,
                           itemCount: notify.length,
@@ -110,15 +105,37 @@ class _NotifyPageState extends State<NotifyPage> {
                                       Navigator.of(context).push(
                                         _createRouteTwo(
                                           utf8
-                                              .decode(actualNotification
-                                                  .description.codeUnits)
+                                              .decode(
+                                                actualNotification
+                                                    .description.codeUnits,
+                                              )
                                               .toString(),
                                           actualNotification.title,
                                         ),
                                       );
                                     },
                                   )
-                                : const Text("");
+                                : NotifyCard(
+                                    id: actualNotification.id,
+                                    description: utf8
+                                        .decode(actualNotification
+                                            .description.codeUnits)
+                                        .toString(),
+                                    date: date[0],
+                                    func: () {
+                                      Navigator.of(context).push(
+                                        _createRouteTwo(
+                                          utf8
+                                              .decode(
+                                                actualNotification
+                                                    .description.codeUnits,
+                                              )
+                                              .toString(),
+                                          actualNotification.title,
+                                        ),
+                                      );
+                                    },
+                                  );
                           },
                         ),
                       ),
